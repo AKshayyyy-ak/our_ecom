@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-=626$*+4h516f)v+d!+^*9=qoh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS =  ['our-ecom.onrender.com']
+ALLOWED_HOSTS = ['our-ecom.onrender.com']
 
 
 # Application definition
@@ -154,3 +154,5 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+APPEND_SLASH = True
