@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-=626$*+4h516f)v+d!+^*9=qoh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']  # Update this with your Render domain when you have it
+ALLOWED_HOSTS =  ['our-ecom.onrender.com']
 
 
 # Application definition
