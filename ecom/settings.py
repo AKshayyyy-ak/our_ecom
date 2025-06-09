@@ -30,9 +30,25 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-=626$*+4h516f)v+d!+^*9=qoh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['https://our-ecom.onrender.com','https://our-ecom.onrender.com']
+ALLOWED_HOSTS = ['our-ecom.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://our-ecom.onrender.com']
+
+# Let Django know HTTPS is being handled by the proxy (Render)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SECURE_SSL_REDIRECT = False  # Render handles SSL
+
+APPEND_SLASH = True  # Only if all URLs have trailing slashes
+
+if not DEBUG:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 
 # Application definition
@@ -145,17 +161,3 @@ WHITENOISE_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Security settings
-if not DEBUG:
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    CSRF_TRUSTED_ORIGINS = ['https://our-ecom.onrender.com']
-
-APPEND_SLASH = True
