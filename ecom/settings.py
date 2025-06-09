@@ -30,7 +30,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-=626$*+4h516f)v+d!+^*9=qoh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['our-ecom.onrender.com']
+ALLOWED_HOSTS = ['https://our-ecom.onrender.com','https://our-ecom.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://our-ecom.onrender.com']
 
 
 # Application definition
@@ -146,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Security settings
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
@@ -154,5 +156,6 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    CSRF_TRUSTED_ORIGINS = ['https://our-ecom.onrender.com']
 
 APPEND_SLASH = True
